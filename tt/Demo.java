@@ -1,3 +1,4 @@
+package tt;
 import java.util.*;
 class WaterLevelObserver{
 	public void update(int waterLevel){
