@@ -26,12 +26,12 @@ public class damAlarmSystem  extends JFrame {
 
          add(mainPanel, BorderLayout.CENTER);
 
-         JSlider slider = new JSlider(JSlider.VERTICAL, 100, 0);
+         JSlider slider = new JSlider(JSlider.VERTICAL, 0, 100, 0);
             slider.setMajorTickSpacing(10);                                         
             slider.setPaintTicks(true);
             slider.setPaintLabels(true);
             mainPanel.add(slider, BorderLayout.CENTER);  
-                           
+
             
 
     }
