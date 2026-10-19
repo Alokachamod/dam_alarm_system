@@ -21,10 +21,18 @@ public class damAlarmSystem  extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
-         JPanel mainPanel = new JPanel();
+         JPanel mainPanel = new JPanel(new BorderLayout());
+         mainPanel.setBackground(BACKGROUND_LIGHT);
 
-         add(mainPanel);
+         add(mainPanel, BorderLayout.CENTER);
 
+         JSlider slider = new JSlider(JSlider.VERTICAL, 100, 0);
+            slider.setMajorTickSpacing(10);                                         
+            slider.setPaintTicks(true);
+            slider.setPaintLabels(true);
+            mainPanel.add(slider, BorderLayout.CENTER);  
+                           
+            
 
     }
 
