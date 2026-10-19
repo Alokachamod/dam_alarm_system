@@ -21,18 +21,31 @@ public class damAlarmSystem  extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
-         JPanel mainPanel = new JPanel(new BorderLayout());
-         mainPanel.setBackground(BACKGROUND_LIGHT);
+        // Using GridBagLayout centers children vertically and horizontally without stretching
+        JPanel mainPanel = new JPanel(new GridBagLayout());
+        mainPanel.setBackground(BACKGROUND_LIGHT);
 
-         add(mainPanel, BorderLayout.CENTER);
+        add(mainPanel, BorderLayout.CENTER);
 
-         JSlider slider = new JSlider(JSlider.VERTICAL, 0, 100, 0);
-            slider.setMajorTickSpacing(10);                                         
-            slider.setPaintTicks(true);
-            slider.setPaintLabels(true);
-            mainPanel.add(slider, BorderLayout.CENTER);  
+        JSlider slider = new JSlider(JSlider.VERTICAL, 0, 100, 0);
+        slider.setMajorTickSpacing(10);                                         
+        slider.setPaintTicks(true);
+        slider.setPaintLabels(true);
+        slider.setOpaque(false); // Matches parent background
+        slider.setPreferredSize(new Dimension(80, 350)); // Set desired height lower than panel (350px)
 
-            
+        mainPanel.add(slider);  
+
+    JPanel devicePanel = new JPanel();
+    devicePanel.setBackground(PANEL_WHITE); 
+    
+    JButton alarm = new  JButton();
+    JButton splitter = new  JButton();
+    JButton display = new  JButton();
+    JButton smsButton = new  JButton();
+
+
+
 
     }
 
