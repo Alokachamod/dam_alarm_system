@@ -28,51 +28,46 @@ public class damAlarmSystem  extends JFrame {
         add(mainPanel, BorderLayout.CENTER);
 
         JSlider slider = new JSlider(JSlider.VERTICAL, 0, 100, 0);
-        slider.setMajorTickSpacing(10);
+        slider.setMajorTickSpacing(10);                                         
         slider.setPaintTicks(true);
         slider.setPaintLabels(true);
-        slider.setOpaque(false);
-        slider.setPreferredSize(new Dimension(80, 350));
+        slider.setOpaque(false); // Matches parent background
+        slider.setPreferredSize(new Dimension(80, 350)); // Set desired height lower than panel (350px)
 
-        GridBagConstraints sliderConstraints = new GridBagConstraints();
-        sliderConstraints.gridx = 0;
-        sliderConstraints.gridy = 0;
-        sliderConstraints.insets = new Insets(20, 20, 20, 20);
-        mainPanel.add(slider, sliderConstraints);
+        mainPanel.add(slider);
 
         JPanel devicePanel = new JPanel(new GridLayout(2, 2, 12, 12));
         devicePanel.setBackground(PANEL_WHITE);
         devicePanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
-        JButton alarm = createStyledButton("Alarm", WARNING_RED, Color.WHITE);
-        JButton splitter = createStyledButton("Splitter", PRIMARY_BLUE, Color.WHITE);
-        JButton display = createStyledButton("Display", SUCCESS_GREEN, Color.WHITE);
-        JButton smsButton = createStyledButton("SMS", TEXT_DARK, Color.WHITE);
+        JButton addAlarm = createStyledButton("Add Alarm", WARNING_RED, Color.WHITE);
+        JButton addSplitter = createStyledButton("Add Splitter", PRIMARY_BLUE, Color.WHITE);
+        JButton addDisplay = createStyledButton("Add Display", SUCCESS_GREEN, Color.WHITE);
+        JButton addSmsButton = createStyledButton("Add SMS", TEXT_DARK, Color.WHITE);
 
-        devicePanel.add(alarm);
-        devicePanel.add(splitter);
-        devicePanel.add(display);
-        devicePanel.add(smsButton);
+        devicePanel.add(addAlarm);
+        devicePanel.add(addSplitter);
+        devicePanel.add(addDisplay);
+        devicePanel.add(addSmsButton);
 
-        GridBagConstraints deviceConstraints = new GridBagConstraints();
-        deviceConstraints.gridx = 1;
-        deviceConstraints.gridy = 0;
-        deviceConstraints.fill = GridBagConstraints.BOTH;
-        deviceConstraints.insets = new Insets(20, 0, 20, 20);
-        mainPanel.add(devicePanel, deviceConstraints);
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        gbc.insets = new Insets(20, 20, 20, 20);
+        mainPanel.add(devicePanel, gbc);
     }
 
-    private JButton createStyledButton(String text, Color background, Color foreground) {
+    private JButton createStyledButton(String text, Color bgColor, Color fgColor) {
         JButton button = new JButton(text);
-        button.setBackground(background);
-        button.setForeground(foreground);
+        button.setBackground(bgColor);
+        button.setForeground(fgColor);
         button.setFont(new Font("SansSerif", Font.BOLD, 14));
         button.setFocusPainted(false);
+        button.setCursor(new Cursor(Cursor.HAND_CURSOR));
         button.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(background.darker(), 1),
+                BorderFactory.createLineBorder(bgColor.darker(), 1),
                 BorderFactory.createEmptyBorder(12, 18, 12, 18)
         ));
-        button.setCursor(new Cursor(Cursor.HAND_CURSOR));
         button.setOpaque(true);
         button.setBorderPainted(true);
         return button;
