@@ -5,7 +5,6 @@ public class ControlRoom {
     public void addWaterLevelObserver(WaterLevelObserver waterLevelObserver) {
         extendArray();
         waterLevelObserverArray[waterLevelObserverArray.length - 1] = waterLevelObserver;
-        // Notify the new device right away with the current level
         waterLevelObserver.update(waterLevel);
     }
 

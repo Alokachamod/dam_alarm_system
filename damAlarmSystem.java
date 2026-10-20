@@ -9,10 +9,7 @@ public class DamAlarmSystem extends JFrame {
     public static final Color WARNING_ORANGE = new Color(255, 140, 0);
     public static final Color PANEL_WHITE = new Color(255, 255, 255);
 
-    // Observer Pattern Subject
     private ControlRoom controlRoom = new ControlRoom();
-
-    // Counters to assign device numbers (Alarm 2, Splitter 2, etc.)
     private int alarmCount = 1;
     private int splitterCount = 1;
     private int displayCount = 1;
@@ -28,7 +25,6 @@ public class DamAlarmSystem extends JFrame {
         mainPanel.setBackground(BACKGROUND_LIGHT);
         add(mainPanel, BorderLayout.CENTER);
 
-        // 1. Water level slider
         JSlider slider = new JSlider(JSlider.VERTICAL, 0, 100, 0);
         slider.setMajorTickSpacing(10);
         slider.setPaintTicks(true);
@@ -68,7 +64,6 @@ public class DamAlarmSystem extends JFrame {
         gbc.insets = new Insets(10, 10, 10, 10);
         mainPanel.add(devicePanel, gbc);
 
-        // 3. Button Action Listeners (Clicking creates a new device window)
         addAlarm.addActionListener(e -> {
             alarmCount++;
             controlRoom.addWaterLevelObserver(new Alarm("Alarm " + alarmCount));
@@ -89,7 +84,6 @@ public class DamAlarmSystem extends JFrame {
             controlRoom.addWaterLevelObserver(new SMSSender("SMS " + smsCount));
         });
 
-        // 4. Default devices created on application startup
         controlRoom.addWaterLevelObserver(new Alarm("Alarm 1"));
         controlRoom.addWaterLevelObserver(new Splitter("Splitter 1"));
         controlRoom.addWaterLevelObserver(new Display("Display 1"));
